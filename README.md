@@ -1,6 +1,6 @@
 # THRUSHTIMER
 
-#### Video Demo: <URL HERE>
+#### Video Demo: <(https://youtu.be/gQp9jUQdNgg)>
 
 #### Description:
 
