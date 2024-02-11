@@ -1,0 +1,125 @@
+{% extends "layout.html" %} {% block title %} THRUSHTIMER [TASKS] {% endblock %}
+{% block css %} <link rel="stylesheet" href="../static/project-styles.css" /> {%
+endblock %} {% block main %}
+
+<!--TRANSITION-->
+<div class="transition"></div>
+
+<!-- Project Manager -->
+<section class="get-in-touch">
+  <h1 class="title">Add Tasks</h1>
+  <form
+    class="contact-form row"
+    name="contactForm"
+    method="POST"
+    action="/project"
+  >
+    <div class="form-field col-lg-6">
+      <input
+        id="name"
+        class="input-text js-input"
+        type="text"
+        required
+        type="text"
+        name="task-title"
+      />
+      <label class="label" for="name">Task Title</label>
+    </div>
+    <div class="form-field col-lg-6">
+      <input
+        id="sessions"
+        class="input-text js-input"
+        type="number"
+        name="num-of-sessions"
+        min="1"
+        required
+      />
+      <label class="label" for="sessions">Sessions</label>
+    </div>
+    <div class="form-field col-lg-12">
+      <input
+        id="message"
+        class="input-text js-input"
+        type="text"
+        name="task-description"
+        required
+      />
+      <label class="label" for="message">Description</label>
+    </div>
+    <div class="form-field col-lg-12">
+      <input class="submit-btn" type="submit" value="Submit" />
+    </div>
+  </form>
+</section>
+
+{% if len == 0 %}
+<main>
+  <div class="header">
+    <h1>NO TASKS YET, ADD ONE ABOVE!</h1>
+  </div>
+</main>
+{% else %}
+<!-- BANNER -->
+<section class="banner">
+  <h1 id="banner-text">Your Tasks</h1>
+</section>
+
+<!-- TASKS CARD -->
+<main>
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+    {% for i in range(0, len) %}
+    <div class="col">
+      {% if tasks[i][4] == False %}
+      <div class="card h-100">
+        <div class="card-body">
+          <h5 class="card-title">{{ tasks[i][0] }}</h5>
+          <p class="card-text">{{ tasks[i][1] }}</p>
+        </div>
+        <div class="card-footer">
+          <div class="sessions">
+            <small>Session(s) left: {{ tasks[i][2] }}</small>
+            <span>
+              <a class="minus" href="/minus/{{ tasks[i][3] }}"
+                ><i class="fas fa-minus"></i
+              ></a>
+              <a class="plus" href="/plus/{{ tasks[i][3] }}"
+                ><i class="fas fa-plus"></i
+              ></a>
+            </span>
+          </div>
+          <div class="action">
+            <a class="complete-btn" href="/update/{{ tasks[i][3] }}"
+              ><i class="fas fa-check"></i
+            ></a>
+            <a class="trash-btn" href="/delete/{{ tasks[i][3] }}"
+              ><i class="fas fa-trash"></i
+            ></a>
+          </div>
+        </div>
+      </div>
+      {% else %}
+      <div class="card h-100">
+        <div class="card-body completed">
+          <h5 class="card-title completed">{{ tasks[i][0] }}</h5>
+          <p class="card-text completed">{{ tasks[i][1] }}</p>
+        </div>
+        <div class="card-footer">
+          <div class="sessions completed">
+            <small>Session(s) left: {{ tasks[i][2] }}</small>
+          </div>
+          <div class="action">
+            <a class="uncomplete-btn" href="/update/{{ tasks[i][3] }}"
+              ><i class="fas fa-times"></i
+            ></a>
+            <a class="trash-btn" href="/delete/{{ tasks[i][3] }}"
+              ><i class="fas fa-trash"></i
+            ></a>
+          </div>
+        </div>
+      </div>
+      {% endif %}
+    </div>
+    {% endfor %}
+  </div>
+</main>
+{% endif %} {% block script %} {% endblock script %} {% endblock main %}

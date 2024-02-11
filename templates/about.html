@@ -1,0 +1,64 @@
+{% extends "layout.html" %} {% block title %} THRUSHTIMER [ABOUT] {% endblock %}
+{% block css %} <link rel="stylesheet" href="../static/about-styles.css" /> {%
+endblock %} {% block main %}
+<div class="site">
+  <!--BANNER-->
+  <section class="banner">
+    <h1 id="banner-text">What is Pomodoro?</h1>
+  </section>
+
+  <!--PERSONAL-->
+  <div class="personal">
+    <p>
+      The Pomodoro Technique is a time management system that encourages people
+      to work with the time they have—rather than against it. Using this method,
+      you break your workday into 25-minute chunks separated by five-minute
+      breaks. These intervals are referred to as pomodoros. After about four
+      pomodoros, you take a longer break of about 15 to 20 minutes. The idea
+      behind the technique is that the timer instills a sense of urgency. Rather
+      than feeling like you have endless time in the workday to get things done
+      and then ultimately squandering those precious work hours on distractions,
+      you know you only have 25 minutes to make as much progress on a task as
+      possible. Additionally, the forced breaks help to cure that frazzled,
+      burnt-out feeling most of us experience toward the end of the day. It’s
+      impossible to spend hours in front of your computer without even realizing
+      it, as that ticking timer reminds you to get up and take a breather.
+      <br /><br />
+      The concept of keeping such detailed track of my workday seemed a little
+      cumbersome to me. So I downloaded a pomodoro timer on my phone. It made
+      things much easier, so I built this webapp with the intention to help
+      anyone who is planning on trying this themselves.
+    </p>
+  </div>
+
+  <div class="about">
+    <div class="about-container">
+      <div class="family">
+        <h3><span>Duration</span></h3>
+        <p>
+          The time you focus on work, or your short break and long break is
+          entirely up to you. For starters, it is reccomended to have a 20
+          minute timer for work, and a 5 and 15 minute timer for both the short
+          break and long break duration respectively. And that is the default
+          time I have set for you. However, if you feel it is too short or long,
+          you can adjust the time in the
+          <a class="settinglink" href="{{ url_for('setting') }}">settings</a>
+          page according to your preference.
+        </p>
+      </div>
+
+      <div class="hobbies">
+        <h3><span>Tasks</span></h3>
+        <p>
+          A part of the Pomodoro Technique is breaking down complex tasks to
+          simpler ones and managing them one by one. By doing this, in each
+          session, you are going to be more focused on a task and be less
+          distracted. You could add and track your tasks and their session on
+          the
+          <a class="settinglink" href="{{ url_for('project') }}">tasks</a> page.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+{% block script %} {% endblock script %} {% endblock main %}

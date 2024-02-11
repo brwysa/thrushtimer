@@ -1,0 +1,33 @@
+{% extends "base.html" %} {% block title %} THRUSHTIMER [LOGIN] {% endblock %}
+{% block css %} <link rel="stylesheet" href="../static/loginstyle.css" /> {%
+endblock %} {% block main %}
+
+<div class="container" id="container">
+  <div class="form-container log-in-container">
+    <form action="/login" method="POST">
+      <h1>Sign in</h1>
+      {{ form.hidden_tag() }} {{ form.email(placeholder="Email") }} {% for error
+      in form.email.errors %}
+      <span class="error">{{ error }}</span>
+      {% endfor %} {{ form.password(placeholder="Password") }} {% for error in
+      form.password.errors %}
+      <span class="error">{{ error }}</span>
+      {% endfor %}
+
+      <a href="#">Forgot your password?</a>
+      <div>{{ form.submit(class="signin") }}</div>
+    </form>
+  </div>
+  <div class="overlay-container">
+    <div class="overlay">
+      <div class="overlay-panel overlay-right">
+        <h1>Hello, Friend!</h1>
+        <p>Enter your personal details and start journey with us!</p>
+        <a href="{{ url_for('register') }}">
+          <button class="ghost">Register</button>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock main %}

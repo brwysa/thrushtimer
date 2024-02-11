@@ -1,0 +1,128 @@
+{% extends "layout.html" %} {% block title %} THRUSHTIMER [HOME] {% endblock %}
+{% block css %} <link rel="stylesheet" href="../static/index-styles.css" />{%
+endblock %} {% block js %}
+<script>
+  var workDuration = "{{ work }}";
+  var shortDuration = "{{ short }}";
+  var longDuration = "{{ long }}";
+</script>
+{% endblock %} {% block main %}
+
+<main>
+  <section class="glass">
+    <div class="dashboard">
+      <div class="user">
+        <h3>Welcome, {{ username }}</h3>
+      </div>
+      <div class="links">
+        <a
+          class="link workLink"
+          href="#"
+          onclick="return pages('work', 'short-break', 'long-break');"
+        >
+          <h5>Work</h5>
+        </a>
+        <a
+          class="link shortLink"
+          href="#"
+          onclick="return pages('short-break', 'work', 'long-break');"
+        >
+          <h5>Short Break</h5>
+        </a>
+        <a
+          class="link longLink"
+          href="#"
+          onclick="return pages('long-break', 'short-break', 'work');"
+        >
+          <h5>Long Break</h5>
+        </a>
+      </div>
+      <a class="modes" href="{{ url_for('project') }}">
+        <div class="mode"><span>Manage tasks here.</span></div>
+      </a>
+    </div>
+    <div class="timer" id="work">
+      <h2>Pomodoro</h2>
+      <div class="countdown">
+        <div class="container-minute">
+          <h3 class="minute">Time</h3>
+          <h4>Minute</h4>
+        </div>
+        <div class="colon">
+          <h1>:</h1>
+        </div>
+        <div class="container-second">
+          <h3 class="second">Time</h3>
+          <h4>Second</h4>
+        </div>
+      </div>
+      <div class="player-container">
+        <audio class="song">
+          <!-- ADD YOUR OWN MP3 HERE -->
+          <source src="../static/sounds/song.mp3" />
+        </audio>
+        <audio class="click">
+          <source src="../static/sounds/click-sfx.mp3" />
+        </audio>
+        <button class="play">Play</button>
+        <button class="pause">Pause</button>
+        <button class="reset">Reset</button>
+      </div>
+    </div>
+
+    <div class="timer" id="short-break">
+      <h2>Short Break</h2>
+      <div class="countdown">
+        <div class="container-minute">
+          <h3 class="shortMinute">Time</h3>
+          <h4>Minute</h4>
+        </div>
+        <div class="colon">
+          <h1>:</h1>
+        </div>
+        <div class="container-second">
+          <h3 class="shortSecond">Time</h3>
+          <h4>Second</h4>
+        </div>
+      </div>
+      <div class="player-container">
+        <audio class="shortSong">
+          <!-- ADD YOUR OWN MP3 HERE -->
+          <source src="../static/sounds/song.mp3" />
+        </audio>
+        <button class="shortPlay">Play</button>
+        <button class="shortPause">Pause</button>
+        <button class="shortReset">Reset</button>
+      </div>
+    </div>
+    <div class="timer" id="long-break">
+      <h2>Long Break</h2>
+      <div class="countdown">
+        <div class="container-minute">
+          <h3 class="longMinute">Time</h3>
+          <h4>Minute</h4>
+        </div>
+        <div class="colon">
+          <h1>:</h1>
+        </div>
+        <div class="container-second">
+          <h3 class="longSecond">Time</h3>
+          <h4>Second</h4>
+        </div>
+      </div>
+      <div class="player-container">
+        <audio class="longSong">
+          <!-- ADD YOUR OWN MP3 HERE -->
+          <source src="../static/sounds/song.mp3" />
+        </audio>
+        <button class="longPlay">Play</button>
+        <button class="longPause">Pause</button>
+        <button class="longReset">Reset</button>
+      </div>
+    </div>
+  </section>
+</main>
+
+{% block script %}
+<script src="../static/js/index.js"></script>
+{% endblock script %} {% endblock main %}

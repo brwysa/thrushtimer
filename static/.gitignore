@@ -1,0 +1,10 @@
+.venv
+*.sqlite
+*.db
+*.pyc
+.vscode/
+*.log
+*.tmp
+.env
+/static/sounds
+.mp3
